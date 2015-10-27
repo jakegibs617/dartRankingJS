@@ -74,4 +74,8 @@ PLATFORMS
 DEPENDENCIES
   jquery-rails
   rails (= 3.0.7)
+  rake (~> 0.8.7)
   sqlite3
+
+BUNDLED WITH
+   1.10.6

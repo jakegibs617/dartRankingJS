@@ -1,11 +1,6 @@
 //jQuery when DOM loads run this
 $(function(){
   
-// removes all data but only temporarily
-  $(".clearRanking").click(function(){
-    $("td").remove();
-  });
-
   //Backbone Model
 
   window.User = Backbone.Model.extend({
@@ -29,24 +24,32 @@ $(function(){
   window.Users = new UserCollection;
 
   //View
-
+// lines 27 - 53 are not working as planned
   window.UserView = Backbone.View.extend({
     tagName: "tr",
   
     events: { 
       //Can be used for handling events on the template 
+      "click": "clear"
     },
   
-    initialize: function(){
-      //this.render();
+    initialize: function() {   
+        // this.listenTo(this.model, 'destroy', this.remove);   
     },
-  
+
+    clear: function() {
+      this.$el.remove();
+      User.model.destroy();
+    },
+
     render: function(){
       var user = this.model.toJSON();
       //Template stuff goes here
       $(this.el).html(ich.dart_template(user));
       return this;
+
     }
+
   });
 
   //Application View
