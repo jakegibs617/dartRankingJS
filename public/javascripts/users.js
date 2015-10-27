@@ -1,15 +1,21 @@
 //jQuery when DOM loads run this
 $(function(){
   
+// removes all data but only temporarily
+  $(".clearRanking").click(function(){
+    $("td").remove();
+  });
+
   //Backbone Model
 
   window.User = Backbone.Model.extend({
-    url: function() {
-      return this.id ? '/users/' + this.id : '/users'; 
-    },
+    // url: function() {
+    //   return this.id ? '/users/' + this.id : '/users'; 
+    // },
   
     initialize: function(){
       //Can be used to initialize Model attributes
+
     }
   });
 
@@ -91,10 +97,12 @@ $(function(){
       Users.create(params);
       
     }
+
   
   });
 
+
+
   //START THE DART RANKING APP
   window.App = new AppView;
-
 });
